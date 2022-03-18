@@ -1,4 +1,8 @@
-from django.http import JsonResponse
+# from django.http import JsonResponse
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
+
+@api_view(["GET"])
 def test_resp(request, *args, **kwargs):
-    return JsonResponse({'message': 'Hello world'})
+    return Response(request)

@@ -10,18 +10,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-from pathlib import Path
+from pathlib import Path, PurePath
 import environ
-import os
 
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parents[1]
 
 # Access env file
 env = environ.Env()
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+environ.Env.read_env(PurePath(BASE_DIR).joinpath('.env'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -46,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'server'
 ]
 
 MIDDLEWARE = [
